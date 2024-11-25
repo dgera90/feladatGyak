@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.3/css/bootstrap.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body ng-app="myApp" ng-controller="myAppController">
+    <div class="container">
+        <h1>Étlap</h1>
+        <div class="row mt-3">
+            <ul
+                ng-init="italok=[{'nev': 'Sör', 'ar': 500}, {'nev': 'Pálinka', 'ar': 800}, {'nev': 'Bor', 'ar': 1200}, {'nev': 'Limonádé', 'ar': 350}, {'nev': 'Koktél', 'ar': 1500}]">
+                <li ng-repeat="ital in italok">{{ital.nev}} - {{ital.ar}} Ft</li>
+            </ul>
+        </div>
+
+        <div class="row mt-3">
+            <table class="table table-bordered table-striped" ng-if="etelek.length">
+                <thead>
+                    <tr>
+                        <th ng-repeat="(key, value) in etelek[0] track by $index">{{key}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="e in etelek track by $index">
+                        <td>{{e.nev}}</td>
+                        <td ng-class="e.kaloria > 350 ? 'bg-danger' : 'bg-success'">
+                            {{e.kaloria}} kcal
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" crossorigin="anonymous"
+            referrerpolicy="no-referrer"></script>
+
+        <script src="./js/app.js"></script>
+</body>
+
+</html>
